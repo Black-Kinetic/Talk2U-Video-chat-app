@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talk2u</title>
+    <link href="src/output.css" rel="stylesheet">
+</head>
+
+<body class="h-full">
+    <div class="flex h-full flex-col lg:flex-row lg:flex-wrap">
+
+        <!-- Header -->
+
+        <nav class="bg-cyan-600 font-sans text-white w-full h-12 text-2xl flex items-center px-4">
+            <img src="talk2uIcon.png" alt="Talk2U Icon" height="40" width="40" class="inline mr-2">
+            <div>Talk2U</div>
+            <a class="ml-auto text-2xl lg:text-3xl" href="#">HOME</a>
+        </nav>
+        
+        <!--main content-->    
+
+        <div class="w-full h-[calc(100%-48px)] flex-col-reverse flex lg:flex-row">
+        
+        <!-- Left Content -->
+
+        <div class="flex flex-col h-1/2 lg:h-full lg:w-2/5">
+
+            <!-- User  Video Area   -->
+
+            <div class="h-3/4 lg:h-1/2 ">
+                <video autoplay="true" class="w-auto h-auto" id="videoElement" alt="me" style="object-fit: cover;"></video>
+            </div>
+
+            <!-- Chat Box -->
+
+            <div class="bg-green-200 w-full flex-1 lg:h-1/2">
+                Chatbox
+            </div>
+
+        </div>
+
+        <!-- Right Content -->
+
+        <div  class="flex-col flex h-1/2 lg:h-full lg:w-3/5">       
+        
+            <!-- Other person Video Area -->
+
+            <div class="w-full h-3/4 ">
+                <video src="guyTalking.mp4" autoplay loop class="w-full h-full" style="object-fit: cover;"></video>
+            </div>
+
+            
+            <!-- Bottom Buttons -->
+            <div class="flex-1 flex h-1/4" >
+
+                <!--Skip button-->
+
+                <button class="items-center justify-center h-full text-white w-1/4 bg-blue-500">
+                    <span class=" text-1xl lg:text-3xl">SKIP</span>
+                </button>
+
+                <!--ads-->
+
+                <div class="bg-amber-500 w-1/2 h-full align-middle">Ad Placeholder</div>
+
+                <!--Report button-->
+
+                <button class="items-center justify-center h-full text-white w-1/4 bg-red-500">
+                    <span class=" text-1xl lg:text-3xl">REPORT</span>
+                </button>
+
+                
+
+
+            </div>
+
+        </div> 
+        </div>
+    </div>
+
+    <script>
+        var video = document.querySelector("#videoElement");
+        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(function (stream) {
+                    video.srcObject = stream;
+                })
+                .catch(function (error) {
+                    console.log("Something went wrong!", error.name, error.message, error);
+                });
+        } else {
+            console.log("getUserMedia not supported");
+        }
+    </script>
+</body>
+
+</html>
